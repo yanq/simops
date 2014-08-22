@@ -1,4 +1,4 @@
 simops
 ======
 
-a simple tools for ops.
+a simple tool for ops.
