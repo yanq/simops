@@ -72,7 +72,7 @@
                     <span id="createAt-labe" class="property-label">command</span>
 
                     <span class="property-value" aria-labelledby="createAt-label">
-                        <g:each in="${ops.command.ExeCommand.list()}">
+                        <g:each in="${ops.command.Command.list()}">
                             <g:link action="exe" params="['server.id':serverInstance.id,'command.id':it.id]" >${it}</g:link>
                         </g:each>
                     </span>

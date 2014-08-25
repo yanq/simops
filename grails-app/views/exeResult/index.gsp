@@ -24,9 +24,13 @@
 			<thead>
 					<tr>
 					
+						<th><g:message code="exeResult.execute.label" default="Execute" /></th>
+					
+						<g:sortableColumn property="command" title="${message(code: 'exeResult.command.label', default: 'Command')}" />
+					
 						<g:sortableColumn property="result" title="${message(code: 'exeResult.result.label', default: 'Result')}" />
 					
-						<th><g:message code="exeResult.execute.label" default="Execute" /></th>
+						<g:sortableColumn property="createAt" title="${message(code: 'exeResult.createAt.label', default: 'Create At')}" />
 					
 					</tr>
 				</thead>
@@ -34,9 +38,13 @@
 				<g:each in="${exeResultInstanceList}" status="i" var="exeResultInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${exeResultInstance.id}">${fieldValue(bean: exeResultInstance, field: "result")}</g:link></td>
+						<td><g:link action="show" id="${exeResultInstance.id}">${fieldValue(bean: exeResultInstance, field: "execute")}</g:link></td>
 					
-						<td>${fieldValue(bean: exeResultInstance, field: "execute")}</td>
+						<td>${fieldValue(bean: exeResultInstance, field: "command")}</td>
+					
+						<td>${fieldValue(bean: exeResultInstance, field: "result")}</td>
+					
+						<td><g:formatDate date="${exeResultInstance.createAt}" /></td>
 					
 					</tr>
 				</g:each>

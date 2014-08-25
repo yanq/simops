@@ -23,6 +23,24 @@
 			</g:if>
 			<ol class="property-list exeResult">
 			
+				<g:if test="${exeResultInstance?.execute}">
+				<li class="fieldcontain">
+					<span id="execute-label" class="property-label"><g:message code="exeResult.execute.label" default="Execute" /></span>
+					
+						<span class="property-value" aria-labelledby="execute-label"><g:link controller="execute" action="show" id="${exeResultInstance?.execute?.id}">${exeResultInstance?.execute?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${exeResultInstance?.command}">
+				<li class="fieldcontain">
+					<span id="command-label" class="property-label"><g:message code="exeResult.command.label" default="Command" /></span>
+					
+						<span class="property-value" aria-labelledby="command-label"><g:fieldValue bean="${exeResultInstance}" field="command"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${exeResultInstance?.result}">
 				<li class="fieldcontain">
 					<span id="result-label" class="property-label"><g:message code="exeResult.result.label" default="Result" /></span>
@@ -32,11 +50,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${exeResultInstance?.execute}">
+				<g:if test="${exeResultInstance?.createAt}">
 				<li class="fieldcontain">
-					<span id="execute-label" class="property-label"><g:message code="exeResult.execute.label" default="Execute" /></span>
+					<span id="createAt-label" class="property-label"><g:message code="exeResult.createAt.label" default="Create At" /></span>
 					
-						<span class="property-value" aria-labelledby="execute-label"><g:link controller="execute" action="show" id="${exeResultInstance?.execute?.id}">${exeResultInstance?.execute?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="createAt-label"><g:formatDate date="${exeResultInstance?.createAt}" /></span>
 					
 				</li>
 				</g:if>

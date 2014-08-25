@@ -31,6 +31,8 @@ class Execute {
     }
 
     ExeResult exe(Command com){
+        ExeResult result = new ExeResult(execute: this)
+
         AntBuilder ant = new AntBuilder()
         ant.project.buildListeners.firstElement().setMessageOutputLevel(0)
 
@@ -40,15 +42,29 @@ class Execute {
                     username:server.userName,
                     password:server.password,
                     command:com.command,
-                    outputproperty: 'result')
+                    outputproperty: 'result'
+            )
+
+            result.command = "$server.address : $com.command"
         }else if (com instanceof FileCommand){
-            //todo filecommand
+            def file,toDir
+            if(com.direction=='upload'){
+                toDir = "$server.userName:$server.password@$server.address:$com.toDir"
+                file = com.file
+            }else{
+                file = "$server.userName:$server.password@$server.address:$com.file"
+                toDir = com.toDir
+            }
+            ant.scp(trust:true,
+                    file:file,
+                    toDir:toDir
+            )
+
+            result.command = "$server.address : $com.direction $com.file to $com.toDir"
         }else {
             throw new Exception("unknown object $com")
         }
 
-        ExeResult result = new ExeResult()
-        result.execute = this
         result.result = ant.project.properties.'result'
 
         return result
