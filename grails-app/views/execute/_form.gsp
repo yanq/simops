@@ -2,12 +2,30 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: executeInstance, field: 'command', 'error')} required">
-	<label for="command">
-		<g:message code="execute.command.label" default="Command" />
+<div class="fieldcontain ${hasErrors(bean: executeInstance, field: 'account', 'error')} required">
+	<label for="account">
+		<g:message code="execute.account.label" default="Account" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="command" name="command.id" from="${ops.command.Command.list()}" optionKey="id" required="" value="${executeInstance?.command?.id}" class="many-to-one"/>
+	<g:select id="account" name="account.id" from="${account.Account.list()}" optionKey="id" required="" value="${executeInstance?.account?.id}" class="many-to-one"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: executeInstance, field: 'task', 'error')} ">
+	<label for="task">
+		<g:message code="execute.task.label" default="Task" />
+		
+	</label>
+	<g:select id="task" name="task.id" from="${ops.project.Task.list()}" optionKey="id" value="${executeInstance?.task?.id}" class="many-to-one" noSelection="['null': '']"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: executeInstance, field: 'command', 'error')} ">
+	<label for="command">
+		<g:message code="execute.command.label" default="Command" />
+		
+	</label>
+	<g:select id="command" name="command.id" from="${ops.command.Command.list()}" optionKey="id" value="${executeInstance?.command?.id}" class="many-to-one" noSelection="['null': '']"/>
 
 </div>
 

@@ -24,4 +24,9 @@ class Task {
     static mapping = {
         commands sort: 'indexId',order: 'asc'
     }
+
+    @Override
+    public String toString() {
+        title
+    }
 }

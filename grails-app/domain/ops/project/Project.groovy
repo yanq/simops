@@ -18,4 +18,9 @@ class Project {
     static mapping = {
         //tasks sort: 'indexId',order: 'asc'
     }
+
+    @Override
+    public String toString() {
+        title
+    }
 }

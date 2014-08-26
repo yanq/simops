@@ -24,6 +24,10 @@
 			<thead>
 					<tr>
 					
+						<th><g:message code="execute.account.label" default="Account" /></th>
+					
+						<th><g:message code="execute.task.label" default="Task" /></th>
+					
 						<th><g:message code="execute.command.label" default="Command" /></th>
 					
 						<th><g:message code="execute.server.label" default="Server" /></th>
@@ -36,7 +40,11 @@
 				<g:each in="${executeInstanceList}" status="i" var="executeInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${executeInstance.id}">${fieldValue(bean: executeInstance, field: "command")}</g:link></td>
+						<td><g:link action="show" id="${executeInstance.id}">${fieldValue(bean: executeInstance, field: "account")}</g:link></td>
+					
+						<td>${fieldValue(bean: executeInstance, field: "task")}</td>
+					
+						<td>${fieldValue(bean: executeInstance, field: "command")}</td>
 					
 						<td>${fieldValue(bean: executeInstance, field: "server")}</td>
 					

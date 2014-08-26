@@ -1,3 +1,4 @@
+import account.Account
 import ops.Server
 import ops.command.Command
 import ops.command.ExeCommand
@@ -9,7 +10,13 @@ class BootStrap {
 
     def init = { servletContext ->
         //init db
-        if (Server.list().size()==0){
+        if (Account.list().size()==0){
+
+            def a = new Account(nickName: 'admin',password: 'admin')
+            if (!a.save(flush: true)) {
+                log.error(a.errors)
+            }
+
             new Project(title: 'myProject',description: 'my project for example')
                     .addToTasks(new Task(title: 'check momery').addToCommands(new ExeCommand(title: 'free',command: 'free')))
                     .save(flush: true)

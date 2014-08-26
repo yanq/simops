@@ -1,14 +1,15 @@
 package ops
 
+import account.Account
 import ops.command.Command
 import ops.command.ExeCommand
 import ops.command.FileCommand
-import org.apache.tools.ant.DefaultLogger
-import com.jcraft.jsch.UserInfo
-import org.apache.tools.ant.taskdefs.optional.ssh.SSHUserInfo
+import ops.project.Task
 
 class Execute {
 
+    Account account
+    Task task
     Command command
     Server server
     Date createAt = new Date()
@@ -16,7 +17,11 @@ class Execute {
     static hasMany = [exeResults:ExeResult]
 
     static constraints = {
-        command()
+        account()
+        task nullable: true
+        command nullable: true,validator: {val,obj->
+            return val!=null || obj.task!=null
+        }
         server()
         createAt()
     }
@@ -26,8 +31,18 @@ class Execute {
     }
 
     //before this ,must saved
-    ExeResult exe(){
-        return exe(this.command)
+    def exe(){
+        if(task){
+            return exeTask(this.task)
+        }else{
+            return exe(this.command)
+        }
+    }
+
+    def exeTask(Task t){
+        t.commands.each {
+            exe(it)
+        }
     }
 
     ExeResult exe(Command com){
@@ -65,7 +80,16 @@ class Execute {
             throw new Exception("unknown object $com")
         }
 
-        result.result = ant.project.properties.'result'
+        String r = ant.project.properties.'result'
+        if (r){
+            r = r.size()>10000 ? r.substring(0,10000) : r
+        }else {
+            r = ''
+        }
+        result.result = r
+
+        //save
+        result.save(flush: true)
 
         return result
     }

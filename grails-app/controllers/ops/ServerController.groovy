@@ -1,5 +1,6 @@
 package ops
 
+import account.Account
 import ops.command.Command
 import ops.command.ExeCommand
 import ops.command.FileCommand
@@ -28,6 +29,7 @@ class ServerController {
         Command c = Command.get(params.command.id)
         Server s = Server.get(params.server.id)
 
+        e.account = Account.list()[0]
         e.command = c
         e.server = s
 

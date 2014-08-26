@@ -23,6 +23,24 @@
 			</g:if>
 			<ol class="property-list execute">
 			
+				<g:if test="${executeInstance?.account}">
+				<li class="fieldcontain">
+					<span id="account-label" class="property-label"><g:message code="execute.account.label" default="Account" /></span>
+					
+						<span class="property-value" aria-labelledby="account-label"><g:link controller="account" action="show" id="${executeInstance?.account?.id}">${executeInstance?.account?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${executeInstance?.task}">
+				<li class="fieldcontain">
+					<span id="task-label" class="property-label"><g:message code="execute.task.label" default="Task" /></span>
+					
+						<span class="property-value" aria-labelledby="task-label"><g:link controller="task" action="show" id="${executeInstance?.task?.id}">${executeInstance?.task?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${executeInstance?.command}">
 				<li class="fieldcontain">
 					<span id="command-label" class="property-label"><g:message code="execute.command.label" default="Command" /></span>
