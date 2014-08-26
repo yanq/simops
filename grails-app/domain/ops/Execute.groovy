@@ -31,7 +31,7 @@ class Execute {
     }
 
     //before this ,must saved
-    def exe(){
+    List exe(){
         if(task){
             return exeTask(this.task)
         }else{
@@ -39,13 +39,15 @@ class Execute {
         }
     }
 
-    def exeTask(Task t){
+    List exeTask(Task t){
+        def result = []
         t.commands.each {
-            exe(it)
+           result << exe(it)
         }
+        return result
     }
 
-    ExeResult exe(Command com){
+    List exe(Command com){
         ExeResult result = new ExeResult(execute: this)
 
         AntBuilder ant = new AntBuilder()
@@ -80,17 +82,8 @@ class Execute {
             throw new Exception("unknown object $com")
         }
 
-        String r = ant.project.properties.'result'
-        if (r){
-            r = r.size()>10000 ? r.substring(0,10000) : r
-        }else {
-            r = ''
-        }
-        result.result = r
+        result.result = ant.project.properties.'result'
 
-        //save
-        result.save(flush: true)
-
-        return result
+        return [result]
     }
 }

@@ -39,9 +39,12 @@ class ServerController {
 
         def r = e.exe()
 
-        if(!r.save(flush: true)){
-            log.error(r.errors)
+        r.each {
+            if(!it.save(flush: true)){
+                log.error(r.errors)
+            }
         }
+
 
         render "<textarea>$r.result</textarea>"
     }
