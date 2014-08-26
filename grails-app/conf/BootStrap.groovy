@@ -1,12 +1,19 @@
 import ops.Server
+import ops.command.Command
 import ops.command.ExeCommand
 import ops.command.FileCommand
+import ops.project.Project
+import ops.project.Task
 
 class BootStrap {
 
     def init = { servletContext ->
         //init db
         if (Server.list().size()==0){
+            new Project(title: 'myProject',description: 'my project for example')
+                    .addToTasks(new Task(title: 'check momery').addToCommands(new ExeCommand(title: 'free',command: 'free')))
+                    .save(flush: true)
+
             new Server(title: 'vm', address: '192.168.1.102',userName: 'yan',password: 'yan').save(flush: true)
             new ExeCommand(title: 'ps',command: 'ps -A').save(flush: true)
             new ExeCommand(title: 'top',command: 'top -bn 1').save(flush: true)

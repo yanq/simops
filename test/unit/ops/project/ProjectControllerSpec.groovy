@@ -1,13 +1,13 @@
-package ops.command
+package ops.project
 
 
 
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(FileCommandController)
-@Mock(FileCommand)
-class FileCommandControllerSpec extends Specification {
+@TestFor(ProjectController)
+@Mock(Project)
+class ProjectControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -21,8 +21,8 @@ class FileCommandControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.fileCommandInstanceList
-            model.fileCommandInstanceCount == 0
+            !model.projectInstanceList
+            model.projectInstanceCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -30,7 +30,7 @@ class FileCommandControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.fileCommandInstance!= null
+            model.projectInstance!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -38,25 +38,25 @@ class FileCommandControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def fileCommand = new FileCommand()
-            fileCommand.validate()
-            controller.save(fileCommand)
+            def project = new Project()
+            project.validate()
+            controller.save(project)
 
         then:"The create view is rendered again with the correct model"
-            model.fileCommandInstance!= null
+            model.projectInstance!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            fileCommand = new FileCommand(params)
+            project = new Project(params)
 
-            controller.save(fileCommand)
+            controller.save(project)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/fileCommand/show/1'
+            response.redirectedUrl == '/project/show/1'
             controller.flash.message != null
-            FileCommand.count() == 1
+            Project.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -68,11 +68,11 @@ class FileCommandControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def fileCommand = new FileCommand(params)
-            controller.show(fileCommand)
+            def project = new Project(params)
+            controller.show(project)
 
         then:"A model is populated containing the domain instance"
-            model.fileCommandInstance == fileCommand
+            model.projectInstance == project
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -84,11 +84,11 @@ class FileCommandControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def fileCommand = new FileCommand(params)
-            controller.edit(fileCommand)
+            def project = new Project(params)
+            controller.edit(project)
 
         then:"A model is populated containing the domain instance"
-            model.fileCommandInstance == fileCommand
+            model.projectInstance == project
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -98,28 +98,28 @@ class FileCommandControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/fileCommand/index'
+            response.redirectedUrl == '/project/index'
             flash.message != null
 
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def fileCommand = new FileCommand()
-            fileCommand.validate()
-            controller.update(fileCommand)
+            def project = new Project()
+            project.validate()
+            controller.update(project)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.fileCommandInstance == fileCommand
+            model.projectInstance == project
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            fileCommand = new FileCommand(params).save(flush: true)
-            controller.update(fileCommand)
+            project = new Project(params).save(flush: true)
+            controller.update(project)
 
         then:"A redirect is issues to the show action"
-            response.redirectedUrl == "/fileCommand/show/$fileCommand.id"
+            response.redirectedUrl == "/project/show/$project.id"
             flash.message != null
     }
 
@@ -130,23 +130,23 @@ class FileCommandControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/fileCommand/index'
+            response.redirectedUrl == '/project/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def fileCommand = new FileCommand(params).save(flush: true)
+            def project = new Project(params).save(flush: true)
 
         then:"It exists"
-            FileCommand.count() == 1
+            Project.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(fileCommand)
+            controller.delete(project)
 
         then:"The instance is deleted"
-            FileCommand.count() == 0
-            response.redirectedUrl == '/fileCommand/index'
+            Project.count() == 0
+            response.redirectedUrl == '/project/index'
             flash.message != null
     }
 }

@@ -2,6 +2,24 @@
 
 
 
+<div class="fieldcontain ${hasErrors(bean: exeCommandInstance, field: 'task', 'error')} ">
+	<label for="task">
+		<g:message code="exeCommand.task.label" default="Task" />
+		
+	</label>
+	<g:select id="task" name="task.id" from="${ops.project.Task.list()}" optionKey="id" value="${exeCommandInstance?.task?.id}" class="many-to-one" noSelection="['null': '']"/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: exeCommandInstance, field: 'indexId', 'error')} required">
+	<label for="indexId">
+		<g:message code="exeCommand.indexId.label" default="Index Id" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="indexId" type="number" value="${exeCommandInstance.indexId}" required=""/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: exeCommandInstance, field: 'title', 'error')} required">
 	<label for="title">
 		<g:message code="exeCommand.title.label" default="Title" />

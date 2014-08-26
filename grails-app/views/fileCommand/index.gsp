@@ -24,6 +24,10 @@
 			<thead>
 					<tr>
 					
+						<th><g:message code="fileCommand.task.label" default="Task" /></th>
+					
+						<g:sortableColumn property="indexId" title="${message(code: 'fileCommand.indexId.label', default: 'Index Id')}" />
+					
 						<g:sortableColumn property="title" title="${message(code: 'fileCommand.title.label', default: 'Title')}" />
 					
 						<g:sortableColumn property="createAt" title="${message(code: 'fileCommand.createAt.label', default: 'Create At')}" />
@@ -32,27 +36,23 @@
 					
 						<g:sortableColumn property="direction" title="${message(code: 'fileCommand.direction.label', default: 'Direction')}" />
 					
-						<g:sortableColumn property="file" title="${message(code: 'fileCommand.file.label', default: 'File')}" />
-					
-						<g:sortableColumn property="toDir" title="${message(code: 'fileCommand.toDir.label', default: 'To Dir')}" />
-					
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${fileCommandInstanceList}" status="i" var="fileCommandInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${fileCommandInstance.id}">${fieldValue(bean: fileCommandInstance, field: "title")}</g:link></td>
+						<td><g:link action="show" id="${fileCommandInstance.id}">${fieldValue(bean: fileCommandInstance, field: "task")}</g:link></td>
+					
+						<td>${fieldValue(bean: fileCommandInstance, field: "indexId")}</td>
+					
+						<td>${fieldValue(bean: fileCommandInstance, field: "title")}</td>
 					
 						<td><g:formatDate date="${fileCommandInstance.createAt}" /></td>
 					
 						<td><g:formatDate date="${fileCommandInstance.updateAt}" /></td>
 					
 						<td>${fieldValue(bean: fileCommandInstance, field: "direction")}</td>
-					
-						<td>${fieldValue(bean: fileCommandInstance, field: "file")}</td>
-					
-						<td>${fieldValue(bean: fileCommandInstance, field: "toDir")}</td>
 					
 					</tr>
 				</g:each>

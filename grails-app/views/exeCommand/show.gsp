@@ -23,6 +23,24 @@
 			</g:if>
 			<ol class="property-list exeCommand">
 			
+				<g:if test="${exeCommandInstance?.task}">
+				<li class="fieldcontain">
+					<span id="task-label" class="property-label"><g:message code="exeCommand.task.label" default="Task" /></span>
+					
+						<span class="property-value" aria-labelledby="task-label"><g:link controller="task" action="show" id="${exeCommandInstance?.task?.id}">${exeCommandInstance?.task?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${exeCommandInstance?.indexId}">
+				<li class="fieldcontain">
+					<span id="indexId-label" class="property-label"><g:message code="exeCommand.indexId.label" default="Index Id" /></span>
+					
+						<span class="property-value" aria-labelledby="indexId-label"><g:fieldValue bean="${exeCommandInstance}" field="indexId"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${exeCommandInstance?.title}">
 				<li class="fieldcontain">
 					<span id="title-label" class="property-label"><g:message code="exeCommand.title.label" default="Title" /></span>

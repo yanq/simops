@@ -1,13 +1,13 @@
-package ops.command
+package ops.project
 
 
 
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(FileCommandController)
-@Mock(FileCommand)
-class FileCommandControllerSpec extends Specification {
+@TestFor(TaskController)
+@Mock(Task)
+class TaskControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -21,8 +21,8 @@ class FileCommandControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.fileCommandInstanceList
-            model.fileCommandInstanceCount == 0
+            !model.taskInstanceList
+            model.taskInstanceCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -30,7 +30,7 @@ class FileCommandControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.fileCommandInstance!= null
+            model.taskInstance!= null
     }
 
     void "Test the save action correctly persists an instance"() {
@@ -38,25 +38,25 @@ class FileCommandControllerSpec extends Specification {
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
             request.method = 'POST'
-            def fileCommand = new FileCommand()
-            fileCommand.validate()
-            controller.save(fileCommand)
+            def task = new Task()
+            task.validate()
+            controller.save(task)
 
         then:"The create view is rendered again with the correct model"
-            model.fileCommandInstance!= null
+            model.taskInstance!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            fileCommand = new FileCommand(params)
+            task = new Task(params)
 
-            controller.save(fileCommand)
+            controller.save(task)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/fileCommand/show/1'
+            response.redirectedUrl == '/task/show/1'
             controller.flash.message != null
-            FileCommand.count() == 1
+            Task.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -68,11 +68,11 @@ class FileCommandControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def fileCommand = new FileCommand(params)
-            controller.show(fileCommand)
+            def task = new Task(params)
+            controller.show(task)
 
         then:"A model is populated containing the domain instance"
-            model.fileCommandInstance == fileCommand
+            model.taskInstance == task
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -84,11 +84,11 @@ class FileCommandControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def fileCommand = new FileCommand(params)
-            controller.edit(fileCommand)
+            def task = new Task(params)
+            controller.edit(task)
 
         then:"A model is populated containing the domain instance"
-            model.fileCommandInstance == fileCommand
+            model.taskInstance == task
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -98,28 +98,28 @@ class FileCommandControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/fileCommand/index'
+            response.redirectedUrl == '/task/index'
             flash.message != null
 
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def fileCommand = new FileCommand()
-            fileCommand.validate()
-            controller.update(fileCommand)
+            def task = new Task()
+            task.validate()
+            controller.update(task)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.fileCommandInstance == fileCommand
+            model.taskInstance == task
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            fileCommand = new FileCommand(params).save(flush: true)
-            controller.update(fileCommand)
+            task = new Task(params).save(flush: true)
+            controller.update(task)
 
         then:"A redirect is issues to the show action"
-            response.redirectedUrl == "/fileCommand/show/$fileCommand.id"
+            response.redirectedUrl == "/task/show/$task.id"
             flash.message != null
     }
 
@@ -130,23 +130,23 @@ class FileCommandControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/fileCommand/index'
+            response.redirectedUrl == '/task/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def fileCommand = new FileCommand(params).save(flush: true)
+            def task = new Task(params).save(flush: true)
 
         then:"It exists"
-            FileCommand.count() == 1
+            Task.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(fileCommand)
+            controller.delete(task)
 
         then:"The instance is deleted"
-            FileCommand.count() == 0
-            response.redirectedUrl == '/fileCommand/index'
+            Task.count() == 0
+            response.redirectedUrl == '/task/index'
             flash.message != null
     }
 }

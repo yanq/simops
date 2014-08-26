@@ -1,6 +1,7 @@
 package ops.command
 
 
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -11,7 +12,7 @@ class FileCommandController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond FileCommand.list(params), model: [fileCommandInstanceCount: FileCommand.count()]
+        respond FileCommand.list(params), model:[fileCommandInstanceCount: FileCommand.count()]
     }
 
     def show(FileCommand fileCommandInstance) {
@@ -30,11 +31,11 @@ class FileCommandController {
         }
 
         if (fileCommandInstance.hasErrors()) {
-            respond fileCommandInstance.errors, view: 'create'
+            respond fileCommandInstance.errors, view:'create'
             return
         }
 
-        fileCommandInstance.save flush: true
+        fileCommandInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
@@ -57,18 +58,18 @@ class FileCommandController {
         }
 
         if (fileCommandInstance.hasErrors()) {
-            respond fileCommandInstance.errors, view: 'edit'
+            respond fileCommandInstance.errors, view:'edit'
             return
         }
 
-        fileCommandInstance.save flush: true
+        fileCommandInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'FileCommand.label', default: 'FileCommand'), fileCommandInstance.id])
                 redirect fileCommandInstance
             }
-            '*' { respond fileCommandInstance, [status: OK] }
+            '*'{ respond fileCommandInstance, [status: OK] }
         }
     }
 
@@ -80,14 +81,14 @@ class FileCommandController {
             return
         }
 
-        fileCommandInstance.delete flush: true
+        fileCommandInstance.delete flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'FileCommand.label', default: 'FileCommand'), fileCommandInstance.id])
-                redirect action: "index", method: "GET"
+                redirect action:"index", method:"GET"
             }
-            '*' { render status: NO_CONTENT }
+            '*'{ render status: NO_CONTENT }
         }
     }
 
@@ -97,7 +98,7 @@ class FileCommandController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'fileCommand.label', default: 'FileCommand'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*' { render status: NOT_FOUND }
+            '*'{ render status: NOT_FOUND }
         }
     }
 }

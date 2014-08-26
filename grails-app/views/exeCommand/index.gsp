@@ -24,6 +24,10 @@
 			<thead>
 					<tr>
 					
+						<th><g:message code="exeCommand.task.label" default="Task" /></th>
+					
+						<g:sortableColumn property="indexId" title="${message(code: 'exeCommand.indexId.label', default: 'Index Id')}" />
+					
 						<g:sortableColumn property="title" title="${message(code: 'exeCommand.title.label', default: 'Title')}" />
 					
 						<g:sortableColumn property="createAt" title="${message(code: 'exeCommand.createAt.label', default: 'Create At')}" />
@@ -38,7 +42,11 @@
 				<g:each in="${exeCommandInstanceList}" status="i" var="exeCommandInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${exeCommandInstance.id}">${fieldValue(bean: exeCommandInstance, field: "title")}</g:link></td>
+						<td><g:link action="show" id="${exeCommandInstance.id}">${fieldValue(bean: exeCommandInstance, field: "task")}</g:link></td>
+					
+						<td>${fieldValue(bean: exeCommandInstance, field: "indexId")}</td>
+					
+						<td>${fieldValue(bean: exeCommandInstance, field: "title")}</td>
 					
 						<td><g:formatDate date="${exeCommandInstance.createAt}" /></td>
 					

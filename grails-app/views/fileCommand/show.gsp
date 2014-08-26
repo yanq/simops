@@ -23,6 +23,24 @@
 			</g:if>
 			<ol class="property-list fileCommand">
 			
+				<g:if test="${fileCommandInstance?.task}">
+				<li class="fieldcontain">
+					<span id="task-label" class="property-label"><g:message code="fileCommand.task.label" default="Task" /></span>
+					
+						<span class="property-value" aria-labelledby="task-label"><g:link controller="task" action="show" id="${fileCommandInstance?.task?.id}">${fileCommandInstance?.task?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${fileCommandInstance?.indexId}">
+				<li class="fieldcontain">
+					<span id="indexId-label" class="property-label"><g:message code="fileCommand.indexId.label" default="Index Id" /></span>
+					
+						<span class="property-value" aria-labelledby="indexId-label"><g:fieldValue bean="${fileCommandInstance}" field="indexId"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${fileCommandInstance?.title}">
 				<li class="fieldcontain">
 					<span id="title-label" class="property-label"><g:message code="fileCommand.title.label" default="Title" /></span>
