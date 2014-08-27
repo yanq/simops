@@ -10,6 +10,7 @@ class Task {
     Project project
     String title
     String description=''
+    int indexId = 1
     Date dateCreated
     Date lastUpdated
 
@@ -17,6 +18,7 @@ class Task {
         project()
         title blank: false,size: 1..100
         description size: 0..1000
+        indexId()
         dateCreated()
         lastUpdated()
     }

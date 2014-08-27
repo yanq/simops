@@ -11,3 +11,59 @@
 *= require mobile
 *= require_self
 */
+
+/*layout*/
+.siteTitle{
+    font-size: 60px;
+    padding: 15px 15px 5px 80px;
+    display: inline-block;
+}
+.siteSlogan{
+    display: inline-block;
+}
+#siteLogin{
+    float: right;
+    margin: 10px 20px;
+}
+#siteLogin a{
+    margin: 0px;
+}
+.footerInfo{
+    font-size: small;
+    text-align: right;
+    margin: 10px;
+}
+.current{
+    background-color: darkgrey;
+}
+
+/*page*/
+.leftBox{
+    width: 200px;
+    float: left;
+    border-right: solid 1px silver;
+}
+.leftBox div{
+    padding: 5px 20px;
+}
+.rightContent{
+    margin-left: 205px;
+    width: 750px;
+}
+
+.projectExeBox{
+    margin: 20px 20px 10px 150px;
+}
+
+.exeInfo{
+    padding: 5px;
+    font-size: large;
+    border-bottom: solid 1px silver;
+}
+.exeResultList textarea{
+    font-family: "Courier New", Courier, monospace;
+    width: 96%;
+}
+.commandInfo{
+    padding: 10px 30px 5px;
+}

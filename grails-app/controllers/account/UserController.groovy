@@ -27,6 +27,10 @@ class UserController {
             redirect(uri:'/')
         }
     }
+    def logout(){
+        session.invalidate()
+        redirect(uri:'/')
+    }
 
     def modify(){
         if (!params.password) return

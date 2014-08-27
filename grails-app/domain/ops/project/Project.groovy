@@ -16,7 +16,7 @@ class Project {
     }
 
     static mapping = {
-        //tasks sort: 'indexId',order: 'asc'
+        tasks sort: 'indexId',order: 'asc'
     }
 
     @Override

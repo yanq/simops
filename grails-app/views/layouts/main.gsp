@@ -17,9 +17,22 @@
 		<g:layoutHead/>
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div>
+		<div id="grailsLogo" role="banner">
+            <div id="siteLogin">
+                <g:if test="${session.user}">
+                    欢迎您，${session.user}
+                    <g:link controller="user" action="logout">退出</g:link>
+                </g:if><g:else>
+                    <g:link controller="user" action="login">登录</g:link>
+                </g:else>
+            </div>
+            <div class="siteTitle">Simops</div>
+            <div class="siteSlogan">a simple tool for ops</div>
+        </div>
 		<g:layoutBody/>
-		<div class="footer" role="contentinfo"></div>
+		<div class="footer" role="contentinfo">
+            <div class="footerInfo">Simops <g:meta name="app.version"></g:meta>  powered by grails <g:meta name="app.grails.version"></g:meta></div>
+		</div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 	</body>
 </html>

@@ -29,7 +29,7 @@ class ServerController {
         Command c = Command.get(params.command.id)
         Server s = Server.get(params.server.id)
 
-        e.account = Account.list()[0]
+        e.account = session.user
         e.command = c
         e.server = s
 

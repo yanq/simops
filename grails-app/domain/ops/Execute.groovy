@@ -42,7 +42,7 @@ class Execute {
     List exeTask(Task t){
         def result = []
         t.commands.each {
-           result << exe(it)
+           result += exe(it)
         }
         return result
     }
@@ -62,7 +62,7 @@ class Execute {
                     outputproperty: 'result'
             )
 
-            result.command = "$server.address : $com.command"
+            result.command = "$com.command"
         }else if (com instanceof FileCommand){
             def file,toDir
             if(com.direction=='upload'){
@@ -77,7 +77,7 @@ class Execute {
                     toDir:toDir
             )
 
-            result.command = "$server.address : $com.direction $com.file to $com.toDir"
+            result.command = "$com.direction $com.file to $com.toDir"
         }else {
             throw new Exception("unknown object $com")
         }
