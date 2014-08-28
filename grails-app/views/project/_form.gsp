@@ -19,22 +19,21 @@
 	<g:textArea name="description" cols="40" rows="5" maxlength="1000" required="" value="${projectInstance?.description}"/>
 
 </div>
+<g:if test="${actionName=='edit'}">
+    <div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'tasks', 'error')} ">
+        <label for="tasks">
+            <g:message code="project.tasks.label" default="Tasks" />
 
-<div class="fieldcontain ${hasErrors(bean: projectInstance, field: 'tasks', 'error')} ">
-	<label for="tasks">
-		<g:message code="project.tasks.label" default="Tasks" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${projectInstance?.tasks?}" var="t">
-    <li><g:link controller="task" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="task" action="create" params="['project.id': projectInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'task.label', default: 'Task')])}</g:link>
-</li>
-</ul>
+        </label>
 
-
-</div>
+        <ul class="one-to-many">
+            <g:each in="${projectInstance?.tasks?}" var="t">
+                <li><g:link controller="task" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
+            </g:each>
+            <li class="add">
+                <g:link controller="task" action="create" params="['project.id': projectInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'task.label', default: 'Task')])}</g:link>
+            </li>
+        </ul>
+    </div>
+</g:if>
 

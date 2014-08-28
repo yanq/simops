@@ -29,24 +29,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: fileCommandInstance, field: 'createAt', 'error')} required">
-	<label for="createAt">
-		<g:message code="fileCommand.createAt.label" default="Create At" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="createAt" precision="day"  value="${fileCommandInstance?.createAt}"  />
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: fileCommandInstance, field: 'updateAt', 'error')} required">
-	<label for="updateAt">
-		<g:message code="fileCommand.updateAt.label" default="Update At" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="updateAt" precision="day"  value="${fileCommandInstance?.updateAt}"  />
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: fileCommandInstance, field: 'direction', 'error')} required">
 	<label for="direction">
 		<g:message code="fileCommand.direction.label" default="Direction" />

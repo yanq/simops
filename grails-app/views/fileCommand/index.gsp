@@ -30,9 +30,9 @@
 					
 						<g:sortableColumn property="title" title="${message(code: 'fileCommand.title.label', default: 'Title')}" />
 					
-						<g:sortableColumn property="createAt" title="${message(code: 'fileCommand.createAt.label', default: 'Create At')}" />
+						<g:sortableColumn property="dateCreated" title="${message(code: 'fileCommand.dateCreated.label', default: 'Date Created')}" />
 					
-						<g:sortableColumn property="updateAt" title="${message(code: 'fileCommand.updateAt.label', default: 'Update At')}" />
+						<g:sortableColumn property="lastUpdated" title="${message(code: 'fileCommand.lastUpdated.label', default: 'Last Updated')}" />
 					
 						<g:sortableColumn property="direction" title="${message(code: 'fileCommand.direction.label', default: 'Direction')}" />
 					
@@ -48,9 +48,9 @@
 					
 						<td>${fieldValue(bean: fileCommandInstance, field: "title")}</td>
 					
-						<td><g:formatDate date="${fileCommandInstance.createAt}" /></td>
+						<td><g:formatDate date="${fileCommandInstance.dateCreated}" /></td>
 					
-						<td><g:formatDate date="${fileCommandInstance.updateAt}" /></td>
+						<td><g:formatDate date="${fileCommandInstance.lastUpdated}" /></td>
 					
 						<td>${fieldValue(bean: fileCommandInstance, field: "direction")}</td>
 					

@@ -1,10 +1,5 @@
 package ops
 
-import account.Account
-import ops.command.Command
-import ops.command.ExeCommand
-import ops.command.FileCommand
-import org.apache.tools.ant.DefaultLogger
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -21,32 +16,6 @@ class ServerController {
 
     def show(Server serverInstance) {
         respond serverInstance
-    }
-
-    @Transactional
-    def exe(){
-        Execute e = new Execute()
-        Command c = Command.get(params.command.id)
-        Server s = Server.get(params.server.id)
-
-        e.account = session.user
-        e.command = c
-        e.server = s
-
-        if (!e.save(flush: true)){
-            log.error(e.errors)
-        }
-
-        def r = e.exe()
-
-        r.each {
-            if(!it.save(flush: true)){
-                log.error(r.errors)
-            }
-        }
-
-
-        render "<textarea>$r.result</textarea>"
     }
 
     def create() {

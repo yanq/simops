@@ -29,10 +29,10 @@
 						<g:sortableColumn property="address" title="${message(code: 'server.address.label', default: 'Address')}" />
 					
 						<g:sortableColumn property="userName" title="${message(code: 'server.userName.label', default: 'User Name')}" />
+
+						<g:sortableColumn property="dateCreated" title="${message(code: 'server.dateCreated.label', default: 'Date Created')}" />
 					
-						<g:sortableColumn property="password" title="${message(code: 'server.password.label', default: 'Password')}" />
-					
-						<g:sortableColumn property="createAt" title="${message(code: 'server.createAt.label', default: 'Create At')}" />
+						<g:sortableColumn property="lastUpdated" title="${message(code: 'server.lastUpdated.label', default: 'Last Updated')}" />
 					
 					</tr>
 				</thead>
@@ -45,10 +45,10 @@
 						<td>${fieldValue(bean: serverInstance, field: "address")}</td>
 					
 						<td>${fieldValue(bean: serverInstance, field: "userName")}</td>
+
+						<td><g:formatDate date="${serverInstance.dateCreated}" /></td>
 					
-						<td>${fieldValue(bean: serverInstance, field: "password")}</td>
-					
-						<td><g:formatDate date="${serverInstance.createAt}" /></td>
+						<td><g:formatDate date="${serverInstance.lastUpdated}" /></td>
 					
 					</tr>
 				</g:each>

@@ -47,6 +47,7 @@ class AccountController {
     }
 
     def edit(Account accountInstance) {
+        flash.message = "Attention: the password is encrypted,you should input password encrypted"
         respond accountInstance
     }
 

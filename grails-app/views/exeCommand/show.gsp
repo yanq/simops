@@ -50,20 +50,20 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${exeCommandInstance?.createAt}">
+				<g:if test="${exeCommandInstance?.dateCreated}">
 				<li class="fieldcontain">
-					<span id="createAt-label" class="property-label"><g:message code="exeCommand.createAt.label" default="Create At" /></span>
+					<span id="dateCreated-label" class="property-label"><g:message code="exeCommand.dateCreated.label" default="Date Created" /></span>
 					
-						<span class="property-value" aria-labelledby="createAt-label"><g:formatDate date="${exeCommandInstance?.createAt}" /></span>
+						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${exeCommandInstance?.dateCreated}" /></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${exeCommandInstance?.updateAt}">
+				<g:if test="${exeCommandInstance?.lastUpdated}">
 				<li class="fieldcontain">
-					<span id="updateAt-label" class="property-label"><g:message code="exeCommand.updateAt.label" default="Update At" /></span>
+					<span id="lastUpdated-label" class="property-label"><g:message code="exeCommand.lastUpdated.label" default="Last Updated" /></span>
 					
-						<span class="property-value" aria-labelledby="updateAt-label"><g:formatDate date="${exeCommandInstance?.updateAt}" /></span>
+						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${exeCommandInstance?.lastUpdated}" /></span>
 					
 				</li>
 				</g:if>

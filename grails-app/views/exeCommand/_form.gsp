@@ -29,24 +29,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: exeCommandInstance, field: 'createAt', 'error')} required">
-	<label for="createAt">
-		<g:message code="exeCommand.createAt.label" default="Create At" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="createAt" precision="day"  value="${exeCommandInstance?.createAt}"  />
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: exeCommandInstance, field: 'updateAt', 'error')} required">
-	<label for="updateAt">
-		<g:message code="exeCommand.updateAt.label" default="Update At" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="updateAt" precision="day"  value="${exeCommandInstance?.updateAt}"  />
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: exeCommandInstance, field: 'command', 'error')} required">
 	<label for="command">
 		<g:message code="exeCommand.command.label" default="Command" />

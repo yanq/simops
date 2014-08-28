@@ -30,9 +30,9 @@
 					
 						<g:sortableColumn property="title" title="${message(code: 'exeCommand.title.label', default: 'Title')}" />
 					
-						<g:sortableColumn property="createAt" title="${message(code: 'exeCommand.createAt.label', default: 'Create At')}" />
+						<g:sortableColumn property="dateCreated" title="${message(code: 'exeCommand.dateCreated.label', default: 'Date Created')}" />
 					
-						<g:sortableColumn property="updateAt" title="${message(code: 'exeCommand.updateAt.label', default: 'Update At')}" />
+						<g:sortableColumn property="lastUpdated" title="${message(code: 'exeCommand.lastUpdated.label', default: 'Last Updated')}" />
 					
 						<g:sortableColumn property="command" title="${message(code: 'exeCommand.command.label', default: 'Command')}" />
 					
@@ -48,9 +48,9 @@
 					
 						<td>${fieldValue(bean: exeCommandInstance, field: "title")}</td>
 					
-						<td><g:formatDate date="${exeCommandInstance.createAt}" /></td>
+						<td><g:formatDate date="${exeCommandInstance.dateCreated}" /></td>
 					
-						<td><g:formatDate date="${exeCommandInstance.updateAt}" /></td>
+						<td><g:formatDate date="${exeCommandInstance.lastUpdated}" /></td>
 					
 						<td>${fieldValue(bean: exeCommandInstance, field: "command")}</td>
 					

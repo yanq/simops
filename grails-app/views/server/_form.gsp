@@ -34,16 +34,7 @@
 		<g:message code="server.password.label" default="Password" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="password" maxlength="100" required="" value="${serverInstance?.password}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: serverInstance, field: 'createAt', 'error')} required">
-	<label for="createAt">
-		<g:message code="server.createAt.label" default="Create At" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="createAt" precision="day"  value="${serverInstance?.createAt}"  />
+	<g:passwordField name="password" maxlength="100" required="" value="${serverInstance?.password}"/>
 
 </div>
 

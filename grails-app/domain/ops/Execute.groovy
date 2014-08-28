@@ -51,14 +51,14 @@ class Execute {
         ExeResult result = new ExeResult(execute: this)
 
         AntBuilder ant = new AntBuilder()
-        ant.project.buildListeners.firstElement().setMessageOutputLevel(0)
+        //ant.project.buildListeners.firstElement().setMessageOutputLevel(0)
 
         if (com instanceof ExeCommand){
             ant.sshexec(trust:true,
                     host:server.address,
                     username:server.userName,
                     password:server.password,
-                    command:com.command,
+                    command:com.command.replaceAll('\r',' \r'), //here,format,or first command can not found
                     outputproperty: 'result'
             )
 

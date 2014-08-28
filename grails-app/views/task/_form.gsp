@@ -28,22 +28,24 @@
 	<g:textArea name="description" cols="40" rows="5" maxlength="1000" required="" value="${taskInstance?.description}"/>
 
 </div>
+<g:if test="${actionName=='edit'}">
+    <div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'commands', 'error')} ">
+        <label for="commands">
+            <g:message code="task.commands.label" default="Commands" />
 
-<div class="fieldcontain ${hasErrors(bean: taskInstance, field: 'commands', 'error')} ">
-	<label for="commands">
-		<g:message code="task.commands.label" default="Commands" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${taskInstance?.commands?}" var="c">
-    <li><g:link controller="command" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="command" action="create" params="['task.id': taskInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'command.label', default: 'Command')])}</g:link>
-</li>
-</ul>
+        </label>
+
+        <ul class="one-to-many">
+            <g:each in="${taskInstance?.commands?}" var="c">
+                <li><g:link controller="command" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
+            </g:each>
+            <li class="add">
+                <g:link controller="exeCommand" action="create" params="['task.id': taskInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'exeCommand.label', default: 'exeCommand')])}</g:link>
+                <g:link controller="fileCommand" action="create" params="['task.id': taskInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'fileCommand.label', default: 'fileCommand')])}</g:link>
+            </li>
+        </ul>
 
 
-</div>
+    </div>
 
+</g:if>

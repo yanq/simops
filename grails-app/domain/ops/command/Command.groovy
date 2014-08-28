@@ -10,15 +10,15 @@ class Command {
     int indexId = 1
 
     String title
-    Date createAt = new Date()
-    Date updateAt = new Date()
+    Date dateCreated
+    Date lastUpdated
 
     static constraints = {
         task nullable: true
         indexId()
         title blank: false,size: 1..100
-        createAt()
-        updateAt()
+        dateCreated()
+        lastUpdated()
     }
 
     @Override

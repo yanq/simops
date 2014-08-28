@@ -6,7 +6,7 @@ class OpsFilters {
 
         def publicControllers = [null,'assets','user']
         def accountControllers = ['ops']
-        def adminControllers = ['admin','account','server','task','project','exeCommand','fileCommand']
+        def adminControllers = ['admin','account','server','task','project','exeCommand','fileCommand','command']
 
         def apps = publicControllers+accountControllers+adminControllers
         def loginControllers=accountControllers+adminControllers

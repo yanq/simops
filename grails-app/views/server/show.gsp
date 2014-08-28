@@ -54,30 +54,28 @@
 				<li class="fieldcontain">
 					<span id="password-label" class="property-label"><g:message code="server.password.label" default="Password" /></span>
 					
-						<span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${serverInstance}" field="password"/></span>
+						<span class="property-value" aria-labelledby="password-label">*</span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${serverInstance?.createAt}">
+				<g:if test="${serverInstance?.dateCreated}">
 				<li class="fieldcontain">
-					<span id="createAt-label" class="property-label"><g:message code="server.createAt.label" default="Create At" /></span>
+					<span id="dateCreated-label" class="property-label"><g:message code="server.dateCreated.label" default="Date Created" /></span>
 					
-						<span class="property-value" aria-labelledby="createAt-label"><g:formatDate date="${serverInstance?.createAt}" /></span>
+						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${serverInstance?.dateCreated}" /></span>
 					
 				</li>
 				</g:if>
-
-                <li class="fieldcontain">
-                    <span id="createAt-labe" class="property-label">command</span>
-
-                    <span class="property-value" aria-labelledby="createAt-label">
-                        <g:each in="${ops.command.Command.list()}">
-                            <g:link action="exe" params="['server.id':serverInstance.id,'command.id':it.id]" >${it}</g:link>
-                        </g:each>
-                    </span>
-
-                </li>
+			
+				<g:if test="${serverInstance?.lastUpdated}">
+				<li class="fieldcontain">
+					<span id="lastUpdated-label" class="property-label"><g:message code="server.lastUpdated.label" default="Last Updated" /></span>
+					
+						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${serverInstance?.lastUpdated}" /></span>
+					
+				</li>
+				</g:if>
 			
 			</ol>
 			<g:form url="[resource:serverInstance, action:'delete']" method="DELETE">
