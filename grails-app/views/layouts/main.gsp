@@ -31,7 +31,9 @@
         </div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo">
-            <div class="footerInfo">Simops <g:meta name="app.version"></g:meta>  powered by grails <g:meta name="app.grails.version"></g:meta></div>
+            <div class="footerInfo">
+                Simops <g:meta name="app.version"></g:meta> &nbsp;&nbsp;&nbsp;&nbsp;
+                powered by <a target="_blank" href="http://grails.org">grails <g:meta name="app.grails.version"></g:meta></a> </div>
 		</div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 	</body>
