@@ -23,7 +23,12 @@ class OpsController {
     }
 
     def server(){
-        render "hi"
+        def servers = Server.list()
+        def serverInstance
+        if (params.id){serverInstance = Server.get(params.id)}
+        if(servers.size()>0 && serverInstance==null){serverInstance = servers[0]}
+
+        return [servers:servers,serverInstance:serverInstance]
     }
 
     def exe(Execute execute){
@@ -46,7 +51,8 @@ class OpsController {
         render template: 'exeResult',model: [execute:execute.refresh()]
     }
 
-    def history(){
-        render 'hi'
+    def history(Integer max){
+            params.max = Math.min(max ?: 10, 100)
+            respond Execute.list(params), model: [executeInstanceCount: Execute.count()]
     }
 }

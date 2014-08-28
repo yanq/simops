@@ -51,7 +51,7 @@
     width: 750px;
 }
 
-.projectExeBox{
+.exeBox {
     margin: 20px 20px 10px 150px;
 }
 
@@ -60,10 +60,19 @@
     font-size: large;
     border-bottom: solid 1px silver;
 }
+.exeInfo span{
+    font-size: smaller;
+    color: dimgray;
+    margin-left: 50px;
+}
 .exeResultList textarea{
     font-family: "Courier New", Courier, monospace;
     width: 96%;
 }
 .commandInfo{
     padding: 10px 30px 5px;
+}
+
+.executeShow{
+    margin: 10px;
 }

@@ -1,5 +1,5 @@
 <div class="exeInfo">
-     On server: ${execute.server} , Run by ${execute.account}
+     On server: ${execute.server} <span>by ${execute.account}, at ${execute.createAt}</span>
 </div>
 <div class="exeResultList">
     <g:each var="r" in="${execute.exeResults}">

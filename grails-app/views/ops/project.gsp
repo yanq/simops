@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Welcome to Simops</title>
+    <title>Project</title>
 </head>
 <body>
     <a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -17,7 +17,7 @@
        </div>
        <div class="rightContent">
            <h1>${projectInstance}</h1>
-           <div class="projectExeBox">
+           <div class="exeBox">
                <g:formRemote url="[action:'exe']"  name="exe" update="exeResult">
                    <g:hiddenField name="project.id" value="${projectInstance.id}"/>
                    <g:select id="task" name="task.id" from="${projectInstance.tasks}" optionKey="id" required="" value="" class="many-to-one"/>
