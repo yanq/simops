@@ -58,7 +58,7 @@ class Execute {
                     host:server.address,
                     username:server.userName,
                     password:server.password,
-                    command:com.command.replaceAll('\r',' \r'), //here,format,or first command can not found
+                    command:com.command.replaceAll(" *[\r\n]+", " && "), //here,format,or first command can not found
                     outputproperty: 'result'
             )
 
