@@ -47,9 +47,9 @@ grails.project.dependency.resolution = {
     }
 
     dependencies {
-        build 'org.apache.ant:ant:1.9.4'
-        build 'org.apache.ant:ant-jsch:1.9.4'
-        build 'com.jcraft:jsch:0.1.51'
+        //build 'org.apache.ant:ant:1.9.4'
+        //build 'org.apache.ant:ant-jsch:1.9.4'
+        //build 'com.jcraft:jsch:0.1.51'
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
         // runtime 'mysql:mysql-connector-java:5.1.29'
         // runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
